@@ -46,8 +46,8 @@ function toMin(t) {
 }
 
 async function main() {
-  const pub = process.env.VAPID_PUBLIC_KEY;
-  const priv = process.env.VAPID_PRIVATE_KEY;
+  const pub = (process.env.VAPID_PUBLIC_KEY || '').trim();
+  const priv = (process.env.VAPID_PRIVATE_KEY || '').trim();
   if (!pub || !priv) {
     console.log('VAPID keys missing from the environment — add the repo secrets. Skipping.');
     return;

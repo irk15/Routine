@@ -61,6 +61,14 @@ async function main() {
   }
   webpush.setVapidDetails('mailto:rohit.socialenza@gmail.com', pub, priv);
 
+  if (process.env.TEST_PUSH === '1') {
+    for (const sub of subs) {
+      try { await webpush.sendNotification(sub, JSON.stringify({ id: 'test', title: 'Discipline Engine', body: 'Test push: reminders are live.' }), { TTL: 600, urgency: 'high' }); console.log('Test push sent'); }
+      catch (err) { console.error('Test push failed:', err.statusCode || err.message); process.exitCode = 1; }
+    }
+    return;
+  }
+
   const schedule = readJson(SCHEDULE_PATH, { items: [] }).items;
   const { dow, mins, dateKey } = nowInToronto();
   const sentAll = readJson(SENT_PATH, {});

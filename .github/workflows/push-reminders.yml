@@ -5,7 +5,11 @@ on:
     # Every 5 minutes (GitHub's minimum). The scheduler is best-effort and can
     # run late or skip runs; scripts/send-push.js has a wide catch-up window.
     - cron: '*/5 * * * *'
-  workflow_dispatch: {} # lets you fire a test run by hand from the Actions tab too, if you ever want to
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Send a test notification now (1 = yes)'
+        default: '0' # lets you fire a test run by hand from the Actions tab too, if you ever want to
   push:
     branches: [main]
     paths:
@@ -34,6 +38,7 @@ jobs:
         env:
           VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          TEST_PUSH: ${{ github.event.inputs.test }}
       - name: Commit updated sent-log / subscription state
         run: |
           git config user.name "discipline-engine-bot"

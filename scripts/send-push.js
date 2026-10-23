@@ -59,7 +59,7 @@ async function main() {
     console.log('No data/subscription.json yet — nothing to send to. Skipping.');
     return;
   }
-  webpush.setVapidDetails('mailto:rohit.kumar@leons.ca', pub, priv);
+  webpush.setVapidDetails('mailto:rohit.socialenza@gmail.com', pub, priv);
 
   const schedule = readJson(SCHEDULE_PATH, { items: [] }).items;
   const { dow, mins, dateKey } = nowInToronto();

@@ -1414,7 +1414,7 @@ $('#cPush').onclick=async()=>{
  }catch(e){toast(e.message,'bad')}
  btn.disabled=false;
 };
-$('#pushGh').onclick=()=>{const v=$('#pushJson').value;if(!v)return;window.open('https://github.com/Leons45/Routine/new/main/data?filename=subscription.json&value='+encodeURIComponent(v),'_blank')};
+$('#pushGh').onclick=()=>{const v=$('#pushJson').value;if(!v)return;window.open('https://github.com/irk15/Routine/new/main/data?filename=subscription.json&value='+encodeURIComponent(v),'_blank')};
 $('#pushCopy').onclick=async()=>{try{await navigator.clipboard.writeText($('#pushJson').value);toast('Copied','good')}catch(e){$('#pushJson').select();toast('Select All then Copy','bad')}};
 $('#cAffSave').onclick=()=>{S.cfg.aff=$('#cAff').value.split('\n').map(s=>s.trim()).filter(Boolean);save();toast('Statements saved','good')};
 $('#cSchedSave').onclick=()=>{try{const a=JSON.parse($('#cSched').value);

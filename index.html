@@ -1396,7 +1396,7 @@ $('#cWrite').onchange=e=>{S.cfg.frTarget.write=+e.target.value||60;save();update
 $('#cNotif').onclick=async()=>{unlockAudio();try{const p=await Notification.requestPermission();toast(p==='granted'?'Notifications enabled':'Notifications blocked',p==='granted'?'good':'bad')}catch(e){toast('Not supported in this browser','bad')}};
 
 /* ---------- push (real, server-sent) ---------- */
-const VAPID_PUBLIC_KEY='BP9r_b5AIakah_LH9I8mcutprDBsEDdEik14bXxCcxtvul9tT96zOG4V_J8rpji0ETz67SUpfuHff0Rj644SfKM';
+const VAPID_PUBLIC_KEY='BG1Un-OoRLrquPGUk7rKgyN8ex4fwMuc4gXWDkUJOBS4QX27WFW5lrTocDd0WBMr_w1ve4cuyRKBeVzTaXLVW9g';
 function urlB64ToUint8(b64){const pad='='.repeat((4-b64.length%4)%4),s=(b64+pad).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(s),out=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
 $('#cPush').onclick=async()=>{
  unlockAudio();const btn=$('#cPush');btn.disabled=true;
